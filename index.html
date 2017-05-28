@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-  <h1>Welcome to Ronan's First app</h1>
-  </body>
 
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <title>Rocket Chat</title>
+</head>
+
+<body>
+  <nav>
+    <ul id="slide-out" class="side-nav fixed">
+      <li><a id="newchat" href="#!">New Chat</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse grey-text text-darken-3"><i class="material-icons">menu</i></a>
+  </nav>
+  <main>
+    
+  </main>
+
+  <!-- Insert this line above script imports  -->
   <script>
-    // You can also require other files to run in this process
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+
+  <!-- normal script imports etc  -->
+  <script src="./jquery.js"></script>
+  <script src="./materialize.js"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>
+    if (window.module) module = window.module;
+
     require('./renderer.js')
   </script>
+</body>
+
 </html>

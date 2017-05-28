@@ -1,2 +1,2 @@
 # RocketChat
-A better, simpler, secure, chat
+A better, simpler, secure, chat.
