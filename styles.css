@@ -53,3 +53,6 @@ main {
 #welcome h3 {
   font-weight: bold;
 }
+.active {
+  color: blue;
+}

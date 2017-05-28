@@ -28,7 +28,9 @@ $('.login').click(function() {
 
   if (user) {
     console.log('loggin out');
-    firebase.auth().signOut().then(function() {}).catch(function(error) {
+    firebase.auth().signOut().then(function() {
+      window.location.reload()
+    }).catch(function(error) {
       Materialize.toast('Log Out ERROR try again', 4000)
     });
 
@@ -65,7 +67,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       console.log(data.key);
       var sender = decode(data.key);
       console.log(sender);
-      $("#newchat").after("<li><a class='chatchoice' data-recipient='" + sender + "' href='#'>" + sender + "</a></li>");
+      $("#newchat").after("<li class='chatchoice' data-recipient='" + sender + "' ><a href='#'>" + sender + "</a></li>");
     });
   } else {
     $('#loader').fadeOut(400)
@@ -88,6 +90,16 @@ $('#newchatcreate').click(function() {
   } else {
     Materialize.toast('Please Login', 4000)
   }
+})
+$('.chatchoice').click(function() {
+  console.log(this);
+  //var recipient = this.data('recipient')
+  //console.log(recipient + 'opened');
+  //this.addClass('active')
+  //recipient = encode(recipient);
+//  useremail = encode(user.email);
+  //$('#chatwindow').html('<div class="chat" data-recipient="'+recipient+'"></div>')
+
 })
 
 function encode(a) {
