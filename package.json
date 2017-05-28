@@ -1,0 +1,22 @@
+{
+  "name": "Rocket Chat",
+  "version": "1.0.0",
+  "description": "A better, simpler, secure, chat.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/StompRocket/RocketChat",
+  "keywords": [
+    "Electron",
+    "Chat",
+    "Secure",
+    "RocketChat",
+    "Simple",
+    "StompRocket"
+  ],
+  "author": "Stomp Rocket Inc",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
