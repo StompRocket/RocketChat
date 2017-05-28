@@ -11,18 +11,40 @@
 </head>
 
 <body>
-
+  <div id="newchatmodal" class="modal">
+    <div class="modal-content">
+      <h4>Create a new chat</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="newchatemail" type="email" class="validate">
+          <label for="newchatemail">Email of recipient</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="newchatcreate" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+      <a id="newchatcancel" href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+  </div>
   <ul id="slide-out" class="side-nav fixed">
     <li>
       <h1>Rocket Chat</h1></li>
-    <li id="options" class="grey-text text-darken-2"><button class="waves-effect waves-green btn-flat"><i class="material-icons">settings</i></button><button class="waves-effect waves-green btn-flat"><i class="material-icons">account_circle</i></button></li>
+    <li id="options" class="grey-text text-darken-2"><button class="waves-effect waves-green btn-flat"><i class="material-icons">settings</i></button><button class="login waves-effect waves-green btn-flat"><i class="material-icons">account_circle</i></button></li>
     <hr>
-    <li><a id="newchat" href="#!">New Chat <i class="material-icons">add</i></a></li>
+    <li id="newchat"><a href="#newchatmodal">New Chat <i class="material-icons">add</i></a></li>
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse grey-text text-darken-3"><i class="material-icons">menu</i></a>
 
   <main>
+    <div id="loader" class="progress">
+      <div class="indeterminate"></div>
+    </div>
 
+    <div id="welcome">
+      <h1>Welcome to Rocket Chat</h1>
+      <h2>A better, simpler, secure, chat.</h2>
+      <h3>Please <a id="welcomelogin" class="login">login</a></h3>
+    </div>
   </main>
 
   <!-- Insert this line above script imports  -->
@@ -36,21 +58,13 @@
   <!-- normal script imports etc  -->
   <script src="./jquery.js"></script>
   <script src="./materialize.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+  <script type="text/javascript" src="./firebase.js"></script>
+
   <!-- Insert this line after script imports -->
   <script>
     if (window.module) module = window.module;
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyC5IQNOr7949TLbnJBje28x-umSU-J68DI",
-      authDomain: "rocketchat-d96c9.firebaseapp.com",
-      databaseURL: "https://rocketchat-d96c9.firebaseio.com",
-      projectId: "rocketchat-d96c9",
-      storageBucket: "rocketchat-d96c9.appspot.com",
-      messagingSenderId: "623290563736"
-    };
-    firebase.initializeApp(config);
-    require('./renderer.js')
+  </script>
+  <script type="text/javascript" src="./renderer.js">
   </script>
 </body>
 
