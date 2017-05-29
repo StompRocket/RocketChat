@@ -17,6 +17,10 @@
   ],
   "author": "Stomp Rocket Inc",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron": "~1.6.2",
+    "express": "4.15.3"
+  },
+  "dependecies": {
+    "express": "4.15.3"
   }
 }
