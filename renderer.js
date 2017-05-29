@@ -1,6 +1,7 @@
 $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
+  $('#chatwindow').hide()
 });
 console.log('ready');
 $('#welcome').hide()
@@ -68,6 +69,30 @@ firebase.auth().onAuthStateChanged(function(user) {
       var sender = decode(data.key);
       console.log(sender);
       $("#newchat").after("<li class='chatchoice' data-recipient='" + sender + "' ><a href='#'>" + sender + "</a></li>");
+      $('.chatchoice').click(function() {
+        $('.active').removeClass('active')
+        console.log(this);
+        var recipient = $(this).data('recipient')
+        console.log(recipient + 'opened');
+        $(this).addClass('active')
+        recipient = encode(recipient);
+        useremail = encode(user.email);
+        $('#chatwindow').fadeIn(400, function() {
+          //Stuff to do *after* the animation takes place
+        })
+        var currentchat = firebase.database().ref('/chats/' + useremail + '/' + recipient + '/');
+        currentchat.on('child_added', function(data) {
+          message = data.val().message;
+          sender = data.val().sender;
+          if (sender == useremail) {
+              $('#newmessagediv').before('<p class="message blue-text">'+ message +'</p>')
+          } else {
+              $('#newmessagediv').before('<p class="message green-text">'+ message +'</p>')
+          }
+
+        });
+
+      })
     });
   } else {
     $('#loader').fadeOut(400)
@@ -91,15 +116,24 @@ $('#newchatcreate').click(function() {
     Materialize.toast('Please Login', 4000)
   }
 })
-$('.chatchoice').click(function() {
-  console.log(this);
-  //var recipient = this.data('recipient')
-  //console.log(recipient + 'opened');
-  //this.addClass('active')
-  //recipient = encode(recipient);
-//  useremail = encode(user.email);
-  //$('#chatwindow').html('<div class="chat" data-recipient="'+recipient+'"></div>')
-
+$('#newmessageform').submit(function(e) {
+  e.preventDefault();
+  recipient = $('.active').data('recipient');
+  var user = firebase.auth().currentUser;
+  recipient = encode(recipient);
+  useremail = encode(user.email);
+  message = $('#newmessage').val()
+  $('#newmessage').val('')
+  var newPostRef = firebase.database().ref('/chats/' + recipient + '/' + useremail).push();
+  newPostRef.set({
+    'message': message,
+    'sender': useremail
+  });
+  var newPostRef = firebase.database().ref('/chats/' + useremail + '/' + recipient).push();
+  newPostRef.set({
+    'message': message,
+    'sender': useremail
+  });
 })
 
 function encode(a) {
