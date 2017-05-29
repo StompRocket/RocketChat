@@ -86,9 +86,9 @@ firebase.auth().onAuthStateChanged(function(user) {
           message = data.val().message;
           sender = data.val().sender;
           if (sender == useremail) {
-            $('<p class="message me blue-text">' + message + '</p>').appendTo('#messages').hide().fadeIn(400);
+            $('<p class="message flow-text me blue-text">' + message + '</p>').appendTo('#messages').hide().fadeIn(400);
           } else {
-            $('<p class="message you green-text">' + message + '</p>').appendTo('#messages').hide().fadeIn(400);
+            $('<p class="message flow-text you green-text">' + message + '</p>').appendTo('#messages').hide().fadeIn(400);
           }
           var element = document.getElementById('messages');
           element.scrollTop = element.scrollHeight - element.clientHeight;
