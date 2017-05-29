@@ -62,8 +62,28 @@ main {
   width: 100%;
 }
 #newmessagediv {
-  bottom: 0px;
-  position: absolute;
+  position: fixed;
+  bottom:0%;
   bottom: 0;
   width: 100%;
+  background-color: #fff;
+  margin: none;
+  margin-top: 5px;
+}
+.message {
+  font-size: 120%;
+}
+.me {
+  text-align: right;
+}
+.you {
+  text-align: left;
+}
+#messages {
+  height: 85%;
+  width: 100%;
+  overflow: scroll;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-bottom: 20px;
 }

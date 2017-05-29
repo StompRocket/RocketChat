@@ -2,6 +2,7 @@ $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
   $('#chatwindow').hide()
+
 });
 console.log('ready');
 $('#welcome').hide()
@@ -62,34 +63,35 @@ firebase.auth().onAuthStateChanged(function(user) {
       photoUrl: photoUrl
     });
     useremail = encode(user.email);
-
     firebase.database().ref('/chats/' + useremail + '/').on('child_added', function(data) {
-
       console.log(data.key);
       var sender = decode(data.key);
       console.log(sender);
       $("#newchat").after("<li class='chatchoice' data-recipient='" + sender + "' ><a href='#'>" + sender + "</a></li>");
       $('.chatchoice').click(function() {
-        $('.active').removeClass('active')
+        $('.active').removeClass('active');
+        $('.message').remove();
+        $('#chatwindow').hide().fadeIn(400, function() {
+          //Stuff to do *after* the animation takes place
+        })
         console.log(this);
         var recipient = $(this).data('recipient')
         console.log(recipient + 'opened');
         $(this).addClass('active')
         recipient = encode(recipient);
         useremail = encode(user.email);
-        $('#chatwindow').fadeIn(400, function() {
-          //Stuff to do *after* the animation takes place
-        })
         var currentchat = firebase.database().ref('/chats/' + useremail + '/' + recipient + '/');
         currentchat.on('child_added', function(data) {
+          console.log('newmessage');
           message = data.val().message;
           sender = data.val().sender;
           if (sender == useremail) {
-              $('#newmessagediv').before('<p class="message blue-text">'+ message +'</p>')
+            $('#messages').append('<p class="message me blue-text">' + message + '</p>');
           } else {
-              $('#newmessagediv').before('<p class="message green-text">'+ message +'</p>')
+            $('#messages').append('<p class="message you green-text">' + message + '</p>');
           }
-
+          var element = document.getElementById('messages');
+          element.scrollTop = element.scrollHeight - element.clientHeight;
         });
 
       })
