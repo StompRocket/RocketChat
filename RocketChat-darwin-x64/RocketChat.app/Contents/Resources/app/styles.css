@@ -1,0 +1,109 @@
+html,body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  padding: 1%;
+}
+header, main, footer {
+     padding-left: 300px;
+
+   }
+
+   @media only screen and (max-width : 992px) {
+     header, main, footer {
+       padding-left: 0;
+     }
+   }
+#slide-out li h1 {
+  font-size: 200%;
+  text-align: center;
+  font-weight: bold;
+}
+#slide-out li {
+  font-weight: 200;
+}
+main {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+}
+#options {
+  text-align: center;
+}
+#options i {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#loader {
+  position: fixed;
+  top: 0;
+  margin: 2;
+  width: 100%;
+}
+#welcome {
+  text-align: center;
+}
+#welcome h2 {
+  font-size: 250%;
+  font-weight: 300;
+  margin-bottom: 20%;
+}
+#welcome h3 {
+  font-weight: bold;
+}
+.active {
+  color: blue;
+}
+#chatwindow {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#newmessagediv {
+  position: fixed;
+  bottom:0%;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  margin: none;
+  margin-top: 5px;
+}
+.message {
+  font-size: 150%;
+}
+.me {
+  text-align: right;
+}
+.you {
+  text-align: left;
+}
+#messages {
+  height: 85%;
+  width: 100%;
+  overflow: scroll;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-bottom: 20px;
+}
+#chatchooser h2 {
+font-size: 200%;
+text-align: center;
+}
+#chatchooser h3 {
+font-size: 150%;
+text-align: center;
+}
+#chatchooser h1 {
+  text-align: center;
+}
+#chatchooser .chatchoice {
+  margin: 10px;
+}
+#choicebox {
+  display: block;
+  width: inherit;
+  margin-left: auto;
+  margin-right: auto;
+}
