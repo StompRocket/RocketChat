@@ -71,7 +71,7 @@ main {
   margin-top: 5px;
 }
 .message {
-  font-size: 120%;
+  font-size: 150%;
 }
 .me {
   text-align: right;
@@ -86,4 +86,24 @@ main {
   padding-left: 2%;
   padding-right: 2%;
   margin-bottom: 20px;
+}
+#chatchooser h2 {
+font-size: 200%;
+text-align: center;
+}
+#chatchooser h3 {
+font-size: 150%;
+text-align: center;
+}
+#chatchooser h1 {
+  text-align: center;
+}
+#chatchooser .chatchoice {
+  margin: 10px;
+}
+#choicebox {
+  display: block;
+  width: inherit;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -2,7 +2,7 @@ $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
   $('#chatwindow').hide()
-
+$('#chatchooser').hide();
 });
 console.log('ready');
 $('#welcome').hide()
@@ -48,6 +48,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     $('#loader').fadeOut(400)
     Materialize.toast('Logged In', 4000)
+    $('#chatchooser').fadeIn(400);
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
     if (user != null) {
@@ -68,7 +69,9 @@ firebase.auth().onAuthStateChanged(function(user) {
       var sender = decode(data.key);
       console.log(sender);
       $("#newchat").after("<li class='chatchoice' data-recipient='" + sender + "' ><a href='#'>" + sender + "</a></li>");
+      $("#choicebox").append("<div class='card-panel waves-effect chatchoice' data-recipient='" + sender + "' >" + sender + "</div>");
       $('.chatchoice').click(function() {
+        $('#chatchooser').fadeOut(400);
         $('.active').removeClass('active');
         $('.message').remove();
         $('#chatwindow').hide().fadeIn(400, function() {
@@ -149,7 +152,7 @@ function decode(a) {
 
 function updatechat(a, recipient, useremail) {
   var updates = {};
-  updates['/chats/' + recipient + '/' + useremail] = true;
-  updates['/chats/' + useremail + '/' + recipient] = true;
+  updates['/chats/' + recipient + '/' + useremail + '/-KlJTbl0OivPHNk9OQFoKlJTbl0OivPHNk9OQFo/message'] = 'new chat with ' + decode(useremail);
+  updates['/chats/' + useremail + '/' + recipient + '/-KlJTbl0OivPHNk9OQFo/message'] = 'new chat with ' + decode(recipient);
   return firebase.database().ref().update(updates);
 }
