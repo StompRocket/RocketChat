@@ -86,9 +86,9 @@ firebase.auth().onAuthStateChanged(function(user) {
           message = data.val().message;
           sender = data.val().sender;
           if (sender == useremail) {
-            $('#messages').append('<p class="message me blue-text">' + message + '</p>');
+            $('<p class="message me blue-text">' + message + '</p>').appendTo('#messages').hide().fadeIn(400);
           } else {
-            $('#messages').append('<p class="message you green-text">' + message + '</p>');
+            $('<p class="message you green-text">' + message + '</p>').appendTo('#messages').hide().fadeIn(400);
           }
           var element = document.getElementById('messages');
           element.scrollTop = element.scrollHeight - element.clientHeight;
@@ -108,6 +108,7 @@ $('#newchatcreate').click(function() {
 
   if (user) {
     var recipient = $("#newchatemail").val();
+    $("#newchatemail").val('');
     recipient = encode(recipient);
     useremail = encode(user.email);
     console.log(recipient);
