@@ -6,7 +6,7 @@
   <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
-  <link rel="stylesheet" href="./app/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <title>Rocket Chat</title>
 </head>
 
@@ -65,11 +65,24 @@
     </div>
   </main>
 
+  <!-- Insert this line above script imports  -->
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
 
-  <script src="./app/jquery.js"></script>
-  <script src="./app/materialize.js"></script>
-  <script type="text/javascript" src="./app/firebase.js"></script>
-  <script type="text/javascript" src="./app/renderer.js">
+  <!-- normal script imports etc  -->
+  <script src="./jquery.js"></script>
+  <script src="./materialize.js"></script>
+  <script type="text/javascript" src="./firebase.js"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>
+    if (window.module) module = window.module;
+  </script>
+  <script type="text/javascript" src="./renderer.js">
   </script>
 </body>
 
