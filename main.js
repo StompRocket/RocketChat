@@ -19,13 +19,14 @@ function createWindow() {
   modalPath = path.join('file://', __dirname, '/startpage.html')
   win.loadURL(modalPath);
   setTimeout(
-  function()
-  {
-    win = null;
+  function () {
+
     mainWindow = new BrowserWindow({
       width: 1200,
       height: 800
     })
+    win.hide();
+      win = null;
     mainWindow.loadURL('http://localhost:3007');
     mainWindow.on('closed', function() {
       mainWindow = null

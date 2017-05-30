@@ -1,11 +1,11 @@
 {
   "name": "RocketChat",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A better, simpler, secure, chat.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . RocketChat --platform=darwin --arch=x64 --electron-version --overwrite"
+    "build": "electron-packager . RocketChat --platform=darwin --arch=x64 --electron-version --overwrite && cp electron.icns RocketChat-darwin-x64/RocketChat.app/Contents/Resources"
   },
   "repository": "https://github.com/StompRocket/RocketChat",
   "keywords": [
