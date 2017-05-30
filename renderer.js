@@ -1,3 +1,8 @@
+require('electron').ipcRenderer.on('newchat', (event, message) => {
+    $('#newchatmodal').modal('open');
+    console.log(message);
+    })
+
 $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
@@ -128,7 +133,8 @@ $('#newmessageform').submit(function(e) {
   var user = firebase.auth().currentUser;
   recipient = encode(recipient);
   useremail = encode(user.email);
-  message = $('#newmessage').val()
+  message = $('#newmessage').val();
+  message = message.replace(/</g, '"<"').replace(/>/g, '">"');
   $('#newmessage').val('')
   var newPostRef = firebase.database().ref('/chats/' + recipient + '/' + useremail).push();
   newPostRef.set({
